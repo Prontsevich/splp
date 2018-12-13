@@ -1,0 +1,16 @@
+<ul class="sp-tabs-panel" [hidden]="!staticTabs.length && !dynamicTabs.length">
+  <li *ngFor="let tab of staticTabs" (click)="selectTab(tab)">
+    <a class="tab-link" href="javascript:void(0)" [class.active]="tab.active"><span class="tab-title">{{tab.title}}</span></a>
+  </li>
+  <!-- dynamic tabs -->
+  <li *ngFor="let tab of dynamicTabs" (click)="selectTab(tab)">
+    <a class="tab-link" [class.active]="tab.active" href="javascript:void(0)">
+      <span class="tab-title">{{tab.title}}</span>
+      <button type="button" class="tab-close" aria-label="Close" (click)="closeTab(tab)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </a>
+  </li>
+</ul>
+<ng-content></ng-content>
+<ng-template spDynamicTabs></ng-template>
